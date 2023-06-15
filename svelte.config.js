@@ -6,9 +6,7 @@ import { vitePreprocess } from '@sveltejs/kit/vite';
 const config = {
 	preprocess: [
 		vitePreprocess(),
-		preprocess({
-			postcss: true
-		})
+		preprocess()
 	],
 
 	kit: {
