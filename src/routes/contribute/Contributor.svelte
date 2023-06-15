@@ -14,4 +14,8 @@
         flex-direction: column;
         align-items: center;
     }
+
+    img {
+        border-radius: 50%;
+    }
 </style>

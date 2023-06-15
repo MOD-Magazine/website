@@ -1,6 +1,7 @@
-const BASE = 'https://discord.com/api/v10';
+const API_BASE = 'https://discord.com/api/v10';
+const CDN_BASE = 'https://cdn.discordapp.com';
 
-import { GUILD_ID, WRITER_ROLE_ID, DEVELOPER_ROLE_ID } from '$env/static/private';
+import { DISCORD_TOKEN, GUILD_ID, WRITER_ROLE_ID, DEVELOPER_ROLE_ID } from '$env/static/private';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
@@ -38,8 +39,11 @@ export async function load() {
  */
 async function getMembers(snowflake) {
     const after = snowflake != undefined ? `&after=${snowflake}` : '';
-    const req = await fetch(`${BASE}/guilds/${GUILD_ID}/members?limit=1000${after}`, {
-        method: 'GET'
+    const req = await fetch(`${API_BASE}/guilds/${GUILD_ID}/members?limit=1000${after}`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bot ${DISCORD_TOKEN}`
+        }
     });
     return req.json();
 }
@@ -52,7 +56,7 @@ function stripData(members) {
     return members.map(member => {
         return {
             name: member.nick ?? member.user?.username ?? 'Unknown',
-            avatar: member.avatar ?? member.user?.avatar ?? undefined
+            avatar: member.avatar ? `${CDN_BASE}/${GUILD_ID}/guild_id/users/${member.user?.id}/avatars/${member.avatar}.png` : `${CDN_BASE}/avatars/${member.user?.id}/${member.user?.avatar}.png`
         }
     })
 }
