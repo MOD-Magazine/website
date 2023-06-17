@@ -27,6 +27,7 @@
 	"type": "module",
 	"dependencies": {
 		"svelte-markdown": "^0.2.3",
+		"svelte-search": "^2.0.1",
 		"svelte-virtual-scroll-list": "^1.1.0"
 	}
 }
