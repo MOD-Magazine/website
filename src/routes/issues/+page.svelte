@@ -82,8 +82,7 @@
 
 <style>
 	.divider {
-		opacity: 75%;
-		color: darkslategray;
+		color: var(--accent);
 	}
 	.entry {
 		text-decoration: none;
@@ -93,14 +92,14 @@
 		width: 100%;
 		font-size: 1rem;
 		padding: 0.5rem;
-		border: 1px dashed #a8a8a8;
-		border-radius: 0.25rem;
+		border: 1px dashed var(--border-color);
+		border-radius: var(--border-radius);
 		border-bottom-right-radius: 0px;
 		border-top-right-radius: 0px;
 	}
 	#search_button {
-		border: 1px dashed #a8a8a8;
-		border-radius: 0.25rem;
+		border: 1px dashed var(--border-color);
+		border-radius: var(--border-radius);
 		border-bottom-left-radius: 0px;
 		border-top-left-radius: 0px;
 		border-left: none;
