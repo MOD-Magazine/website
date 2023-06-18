@@ -4,7 +4,7 @@
 
 	/** @type {import('./$types').PageData} */
 	export let data;
-	
+
 	/**
 	 * @type {VirtualScroll}
 	 */
@@ -16,16 +16,10 @@
 	let value;
 
 	/**
-	 * @type {any}
-	 */
-	let vh1;
-
-	/**
 	 * @type {{ uniqueKey: string; data: any; }[]}
 	 */
 	const things = [];
 
-	let i = 0;
 	Array.from(data.json.issues).forEach((element) => {
 		if (element.divider == null)
 			things.push({
@@ -33,7 +27,6 @@
 				data: element
 			});
 		else things.push({ uniqueKey: element.divider, data: element });
-		i++;
 	});
 	let newthings = [...things];
 
@@ -60,7 +53,6 @@
 <div style="display: flex;">
 	<Search
 		hideLabel={true}
-		bind:height={vh1}
 		bind:value
 		on:submit={submit}
 		label="Search: "

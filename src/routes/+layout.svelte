@@ -1,30 +1,30 @@
 <script>
-    import '../app.css';
-    import Header from '$lib/Header.svelte';
+	import '../app.css';
+	import Header from '$lib/Header.svelte';
 </script>
 
-<Header/>
+<Header />
 
 <div>
-    <main>
-        <slot />
-    </main>
+	<main>
+		<slot />
+	</main>
 </div>
 
 <style>
-    div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+	div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
 
-    main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1.25em;
-        width: 100%;
-        max-width: 960px;
-    }
+	main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 1.25em;
+		width: 100%;
+		max-width: 960px;
+	}
 </style>
