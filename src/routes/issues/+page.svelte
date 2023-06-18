@@ -58,9 +58,13 @@
 		label="Search: "
 		placeholder="Search here."
 	/>
+
 	<button on:click={search} id="search_button" class="material-symbols-outlined"> search </button>
 	<button
-		on:click={() => (newthings = [...things])}
+		on:click={() => {
+			newthings = [...things];
+			value = '';
+		}}
 		id="close_button"
 		class="material-symbols-outlined"
 	>
@@ -95,6 +99,22 @@
 		border-radius: var(--border-radius);
 		border-bottom-right-radius: 0px;
 		border-top-right-radius: 0px;
+	}
+	/* stupid clear button*/
+	:global([data-svelte-search] input)::-webkit-search-decoration,
+	:global([data-svelte-search] input)::-webkit-search-cancel-button {
+		--webkit-appearance: none;
+		appearance: none;
+	}
+	:global([data-svelte-search] input)::-ms-clear {
+		display: none;
+		width: 0;
+		height: 0;
+	}
+	:global([data-svelte-search] input)::-ms-reveal {
+		display: none;
+		width: 0;
+		height: 0;
 	}
 	#search_button {
 		border: 1px dashed var(--border-color);
