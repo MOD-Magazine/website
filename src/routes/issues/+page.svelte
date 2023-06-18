@@ -1,6 +1,7 @@
 <script>
 	import Search from 'svelte-search';
 	import { VirtualScroll } from 'svelte-virtual-scroll-list';
+	import Fuse from 'fuse.js';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -16,32 +17,31 @@
 	let value;
 
 	/**
-	 * @type {{ uniqueKey: string; data: any; }[]}
+	 * @type {{ uniqueKey: any; data: any; }[]}
 	 */
-	const things = [];
-
+	let things = [];
+	let i = 0;
 	Array.from(data.json.issues).forEach((element) => {
-		if (element.divider == null)
-			things.push({
-				uniqueKey: element.name + ' ' + element.info,
-				data: element
-			});
-		else things.push({ uniqueKey: element.divider, data: element });
+		things.push({
+			uniqueKey: i,
+			data: element
+		});
+		i++;
 	});
 	let newthings = [...things];
 
-	//search
-	const getTerms = (/** @type {{ uniqueKey: string; }} */ e) => e.uniqueKey;
-	const submit = () => {
-		newthings = [...things];
-		things.forEach((e) => {
-			if (!getTerms(e).toLowerCase().includes(value.toLowerCase())) {
-				const index = newthings.indexOf(e);
-				if (index > -1) {
-					newthings.splice(index, 1);
-				}
-			}
-		});
+	//New Search
+	const search_engine = new Fuse(things, {
+		keys: ['data.name', 'data.info']
+	});
+	const search = () => {
+		if (value == '') newthings = [...things];
+		else {
+			newthings = [];
+			search_engine.search(value).forEach((e) => {
+				newthings.push(e.item);
+			});
+		}
 	};
 </script>
 
@@ -54,11 +54,18 @@
 	<Search
 		hideLabel={true}
 		bind:value
-		on:submit={submit}
+		on:submit={search}
 		label="Search: "
 		placeholder="Search here."
 	/>
-	<button on:click={submit} id="search_button" class="material-symbols-outlined"> search </button>
+	<button on:click={search} id="search_button" class="material-symbols-outlined"> search </button>
+	<button
+		on:click={() => (newthings = [...things])}
+		id="close_button"
+		class="material-symbols-outlined"
+	>
+		close
+	</button>
 </div>
 
 <VirtualScroll bind:this={list} data={newthings} key="uniqueKey" let:data pageMode={true}>
@@ -91,9 +98,14 @@
 	}
 	#search_button {
 		border: 1px dashed var(--border-color);
+		border-radius: 0px;
+		border-left: none;
+		border-right: none;
+	}
+	#close_button {
+		border: 1px dashed var(--border-color);
 		border-radius: var(--border-radius);
 		border-bottom-left-radius: 0px;
 		border-top-left-radius: 0px;
-		border-left: none;
 	}
 </style>

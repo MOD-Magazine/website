@@ -1,6 +1,6 @@
 <script>
-    import SvelteMarkdown from 'svelte-markdown'
-    const source = `
+	import SvelteMarkdown from 'svelte-markdown';
+	const source = `
 # This is a header
 
 This is a paragraph.
@@ -14,7 +14,7 @@ This is a paragraph.
 
 | And this is | A table |
 |-------------|---------|
-| With two    | columns |`
-    </script>
-  
+| With two    | columns |`;
+</script>
+
 <SvelteMarkdown {source} />
