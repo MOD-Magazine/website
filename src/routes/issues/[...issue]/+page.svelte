@@ -41,4 +41,9 @@
 		visibility: hidden;
 		display: inline;
 	}
+	:global(blockquote){
+		border-left: 10px solid #1b2735c4;
+		border-radius: var(--border-radius);
+		padding-left: 10px;
+	}
 </style>
