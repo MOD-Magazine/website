@@ -2,7 +2,7 @@ import { redirect } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
-	const issues = JSON.parse(await (await fetch('https://raw.githubusercontent.com/MOD-Magazine/MOD-Magazine/Issues/issues.json')).text());
+	const issues = JSON.parse(await (await fetch('https://raw.githubusercontent.com/MOD-Magazine/MOD-Magazine/main/Issues/issues.json')).text());
 
 	//Get latest non-divider issue
 	let index = 0;
