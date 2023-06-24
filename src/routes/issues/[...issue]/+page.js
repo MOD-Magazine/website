@@ -26,6 +26,9 @@ export async function load({ fetch, params }) {
 	else {
 		data = fm_parsed.data;
 	}
+	if (data.author == null) data.author = 'Ghost';
+	if (data.coauthors == null) data.coauthors = [];
+	if (data.title == null) data.title = '404: Not Found';
 
 	return {
 		markdown: text,
