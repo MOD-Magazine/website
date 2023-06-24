@@ -26,11 +26,11 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"discord-api-types": "^0.37.45",
 		"frontmatter": "^0.0.3",
 		"fuse.js": "^6.6.2",
+		"svelte-markdown": "^0.2.3",
 		"svelte-search": "^2.0.1",
-		"svelte-virtual-scroll-list": "^1.1.0",
-		"discord-api-types": "^0.37.45",
-		"svelte-markdown": "^0.2.3"
+		"svelte-virtual-scroll-list": "^1.1.0"
 	}
 }
