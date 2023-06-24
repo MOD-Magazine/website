@@ -10,37 +10,75 @@
 	let title = data.title;
 
 	const author = data.author;
+	/**
+	 * @type {any[]}
+	 */
+	let coauthors = data.coauthors;
 </script>
 
 <h1>{title}</h1>
-<div id="ma">
-	<img id="main_author" src="https://github.com/{author}.png" width="40px" alt={author} />
-	<p id="ma_tooltip">{author}</p>
+
+<div>
+	<img class="author author_main" src="https://github.com/{author}.png" width="40px" alt={author} />
+	<div class="tooltip_wrapper">
+		<p class="tooltip tooltip_main">{author}</p>
+	</div>
+</div>
+
+<div class="coauthors">
+	{#each coauthors as c_author}
+		<div>
+			<img class="author" src="https://github.com/{c_author}.png" width="40px" alt={author} />
+			<div class="tooltip_wrapper">
+				<p class="tooltip">{c_author}</p>
+			</div>
+		</div>
+	{/each}
 </div>
 <SvelteMarkdown source={markdown} />
 
 <style>
-	#main_author {
+	.author {
 		border-radius: 100%;
 	}
-	#main_author:hover ~ #ma_tooltip {
+	.coauthors {
+		display: flex;
+	}
+	.author:hover ~ .tooltip_wrapper > .tooltip {
 		transition: 500ms linear;
 		visibility: visible;
 		opacity: 100;
 	}
-	#ma_tooltip {
+	.tooltip_wrapper {
 		position: relative;
-		right: 30px;
+		width: 0;
+		height: 0;
+	}
+	.tooltip {
+		pointer-events: none;
+		position: relative;
 		border-radius: var(--border-radius);
 		background-color: var(--primary);
 		padding: 5px;
-		font-size: xx-small;
+		font-size: small;
 		color: white;
 		transition: 500ms linear;
 		opacity: 0;
 		visibility: hidden;
 		display: inline;
+		bottom: 20px;
+		left: 15px;
 	}
+	.author_main {
+		width: 80px;
+		height: 80px;
+	}
+	.tooltip_main {
+		font-size: medium;
+		bottom: 30px;
+		left: 30px;
+	}
+
 	:global(blockquote) {
 		border-left: 10px solid #1b2735c4;
 		border-radius: var(--border-radius);
