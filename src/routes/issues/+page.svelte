@@ -15,7 +15,10 @@
 	 * @type {{ uniqueKey: any; data: any; }[]}
 	 */
 	let articles = data.json.flatMap((i, idx) => {
-		let result = [{ uniqueKey: idx, data: { divider: i.date } }];
+		let month = i.date.split('-')[0];
+		let year = i.date.split('-')[1];
+		let divider = month[0].toUpperCase() + month.slice(1) + ' ' + year;
+		let result = [{ uniqueKey: idx, data: { divider } }];
 		result = result.concat(i.articles.map((a, idx) => ({ uniqueKey: `article-${idx}`, data: a })));
 		return result;
 	});
