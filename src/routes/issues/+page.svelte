@@ -67,7 +67,7 @@
 	{#if data.data.divider != null}
 		<h1 class="divider">{data.data.divider}</h1>
 	{:else}
-		<a class="entry" href={data.data.path}>
+		<a class="entry" href={`/issues${data.data.path}`}>
 			<h3 style="margin-left:20px">{data.data.title}</h3>
 			<p style="margin-left:40px">{data.data.summary}</p>
 		</a>
