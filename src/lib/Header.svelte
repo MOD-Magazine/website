@@ -3,7 +3,6 @@
 		<span>MOD! Magazine</span>
 		<div>
 			<a href="/issues">All Articles</a>
-			<a href="/latest">Latest Article</a>
 		</div>
 	</nav>
 </header>

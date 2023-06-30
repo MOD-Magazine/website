@@ -1,45 +1,36 @@
 <script>
 	import Search from 'svelte-search';
-	import { VirtualScroll } from 'svelte-virtual-scroll-list';
 	import Fuse from 'fuse.js';
+	import { VirtualScroll } from 'svelte-virtual-scroll-list';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
 
 	/**
-	 * @type {VirtualScroll}
-	 */
-	let list;
-
-	/**
 	 * @type {string}
 	 */
 	let value;
-
+	
 	/**
 	 * @type {{ uniqueKey: any; data: any; }[]}
 	 */
-	let things = [];
-	let i = 0;
-	Array.from(data.json.issues).forEach((element) => {
-		things.push({
-			uniqueKey: i,
-			data: element
-		});
-		i++;
+	let articles = data.json.flatMap((i, idx) => {
+		let result = [{ uniqueKey: idx, data: { divider: i.date } }];
+		result = result.concat(i.articles.map((a, idx) => ({ uniqueKey: `article-${idx}`, data: a })));
+		return result;
 	});
-	let newthings = [...things];
+	let searchedArticles = [...articles];
 
-	//New Search
-	const search_engine = new Fuse(things, {
-		keys: ['data.name', 'data.info']
+	const search_engine = new Fuse(articles, {
+		keys: ['data.title', 'data.summary']
 	});
+
 	const search = () => {
-		if (value == '') newthings = [...things];
+		if (value == '') searchedArticles = [...articles];
 		else {
-			newthings = [];
+			searchedArticles = [];
 			search_engine.search(value).forEach((e) => {
-				newthings.push(e.item);
+				searchedArticles.push(e.item);
 			});
 		}
 	};
@@ -59,10 +50,10 @@
 		placeholder="Search here."
 	/>
 
-	<button on:click={search} id="search_button" class="material-symbols-outlined"> search </button>
+	<button on:click={search} id="search_button" class="material-symbols-outlined">search</button>
 	<button
 		on:click={() => {
-			newthings = [...things];
+			searchedArticles = [...articles];
 			value = '';
 		}}
 		id="close_button"
@@ -72,13 +63,13 @@
 	</button>
 </div>
 
-<VirtualScroll bind:this={list} data={newthings} key="uniqueKey" let:data pageMode={true}>
+<VirtualScroll data={searchedArticles} key="uniqueKey" let:data pageMode={true}>
 	{#if data.data.divider != null}
 		<h1 class="divider">{data.data.divider}</h1>
 	{:else}
-		<a class="entry" href={data.data.url}>
-			<h3 style="margin-left:20px">{data.data.name}</h3>
-			<p style="margin-left:40px">{data.data.info}</p>
+		<a class="entry" href={data.data.path}>
+			<h3 style="margin-left:20px">{data.data.title}</h3>
+			<p style="margin-left:40px">{data.data.summary}</p>
 		</a>
 	{/if}
 </VirtualScroll>
