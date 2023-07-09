@@ -1,42 +1,21 @@
-<script>
-	import Search from 'svelte-search';
-	import Fuse from 'fuse.js';
-	import { VirtualScroll } from 'svelte-virtual-scroll-list';
+<script lang="ts">
+	import Search from "svelte-search";
+	import Fuse from "fuse.js";
+	import { VirtualScroll } from "svelte-virtual-scroll-list";
+	import type { PageData } from "./$types";
 
-	/** @type {import('./$types').PageData} */
-	export let data;
+	export let data: PageData;
+	let issues = data.issues;
+	let searchQuery: string;
 
-	/**
-	 * @type {string}
-	 */
-	let value;
-	
-	/**
-	 * @type {{ uniqueKey: any; data: any; }[]}
-	 */
-	let articles = data.json.flatMap((i, idx) => {
-		let month = i.date.split('-')[0];
-		let year = i.date.split('-')[1];
-		let divider = month[0].toUpperCase() + month.slice(1) + ' ' + year;
-		let result = [{ uniqueKey: idx, data: { divider } }];
-		result = result.concat(i.articles.map((a, idx) => ({ uniqueKey: `article-${idx}`, data: a })));
-		return result;
-	});
-	let searchedArticles = [...articles];
+	const articles = issues.flatMap((i) => i.articles);
+	let filteredArticles = [...articles];
 
-	const search_engine = new Fuse(articles, {
-		keys: ['data.title', 'data.summary']
+	const fuse = new Fuse(articles, {
+		keys: ["title", "summary"],
 	});
 
-	const search = () => {
-		if (value == '') searchedArticles = [...articles];
-		else {
-			searchedArticles = [];
-			search_engine.search(value).forEach((e) => {
-				searchedArticles.push(e.item);
-			});
-		}
-	};
+	const search = () => (filteredArticles = fuse.search(searchQuery).map((e) => e.item));
 </script>
 
 <link
@@ -45,37 +24,47 @@
 />
 
 <div style="display: flex;">
+	<!-- TODO: Use a custom component for this, update results on type -->
 	<Search
 		hideLabel={true}
-		bind:value
+		bind:value={searchQuery}
 		on:submit={search}
 		label="Search: "
 		placeholder="Search here."
 	/>
 
-	<button on:click={search} id="search_button" class="material-symbols-outlined">search</button>
+	<button on:click={search} id="search_button" class="material-symbols-outlined">Search</button>
 	<button
 		on:click={() => {
-			searchedArticles = [...articles];
-			value = '';
+			filteredArticles = [...articles];
+			searchQuery = "";
 		}}
 		id="close_button"
 		class="material-symbols-outlined"
 	>
-		close
+		Close
 	</button>
 </div>
 
-<VirtualScroll data={searchedArticles} key="uniqueKey" let:data pageMode={true}>
-	{#if data.data.divider != null}
-		<h1 class="divider">{data.data.divider}</h1>
-	{:else}
-		<a class="entry" href={`/issues/${data.data.path}`}>
-			<h3 style="margin-left:20px">{data.data.title}</h3>
-			<p style="margin-left:40px">{data.data.summary}</p>
+{#if searchQuery === ""}
+	<VirtualScroll data={issues} key="date" let:data pageMode={true}>
+		<h1 class="divider">{data.date}</h1>
+
+		{#each data.articles as article}
+			<a class="entry" href={`/issues/${article.path}`}>
+				<h3 style="margin-left:20px">{article.title}</h3>
+				<p style="margin-left:40px">{article.summary}</p>
+			</a>
+		{/each}
+	</VirtualScroll>
+{:else}
+	<VirtualScroll data={filteredArticles} key="title" let:data pageMode={true}>
+		<a class="entry" href={`/issues/${data.path}`}>
+			<h3 style="margin-left:20px">{data.title}</h3>
+			<p style="margin-left:40px">{data.summary}</p>
 		</a>
-	{/if}
-</VirtualScroll>
+	</VirtualScroll>
+{/if}
 
 <style>
 	.divider {

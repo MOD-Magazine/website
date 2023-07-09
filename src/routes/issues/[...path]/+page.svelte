@@ -1,41 +1,41 @@
-<script>
-	import SvelteMarkdown from 'svelte-markdown';
-	/** @type {import('./$types').PageData} */
-	export let data;
+<script lang="ts">
+	import SvelteMarkdown from "svelte-markdown";
+	import type { PageData } from "./$types";
 
-	/**
-	 * @type {string}
-	 */
-	const markdown = data.markdown;
-	let title = data.title;
-
-	const author = data.author;
-	/**
-	 * @type {any[]}
-	 */
-	let coauthors = data.coauthors;
+	export let data: PageData;
 </script>
 
-<h1>{title}</h1>
+<h1>{data.title}</h1>
 
 <div>
-	<img class="author author_main" src="https://github.com/{author}.png" width="40px" alt={author} />
+	<img
+		class="author author_main"
+		src="https://github.com/{data.author}.png"
+		width="40px"
+		alt={`avatar of ${data.author}`}
+	/>
 	<div class="tooltip_wrapper">
-		<p class="tooltip tooltip_main">{author}</p>
+		<p class="tooltip tooltip_main">{data.author}</p>
 	</div>
 </div>
 
 <div class="coauthors">
-	{#each coauthors as c_author}
+	{#each data.coauthors as coAuthor}
 		<div>
-			<img class="author" src="https://github.com/{c_author}.png" width="40px" alt={author} />
+			<img
+				class="author"
+				src="https://github.com/{coAuthor}.png"
+				width="40px"
+				alt={`avatar of ${coAuthor}`}
+			/>
 			<div class="tooltip_wrapper">
-				<p class="tooltip">{c_author}</p>
+				<p class="tooltip">{coAuthor}</p>
 			</div>
 		</div>
 	{/each}
 </div>
-<SvelteMarkdown source={markdown} />
+
+<SvelteMarkdown source={data.markdown} />
 
 <style>
 	.author {
