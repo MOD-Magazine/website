@@ -15,7 +15,13 @@
 		keys: ["title", "summary"],
 	});
 
-	const search = () => (filteredArticles = fuse.search(searchQuery).map((e) => e.item));
+	const search = () => {		
+		if (searchQuery === "") {
+			filteredArticles = [...articles];
+		} else {
+			filteredArticles = fuse.search(searchQuery).map((e) => e.item);
+		}
+	};
 </script>
 
 <link
@@ -24,11 +30,12 @@
 />
 
 <div style="display: flex;">
-	<!-- TODO: Use a custom component for this, update results on type -->
+	<!-- TODO: Use a custom component for this, I don't think we should need a library for it -->
 	<Search
 		hideLabel={true}
 		bind:value={searchQuery}
 		on:submit={search}
+		on:type={search}
 		label="Search: "
 		placeholder="Search here."
 	/>
