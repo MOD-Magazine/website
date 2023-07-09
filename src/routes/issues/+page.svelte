@@ -1,7 +1,7 @@
 <script>
-	import Search from 'svelte-search';
-	import Fuse from 'fuse.js';
-	import { VirtualScroll } from 'svelte-virtual-scroll-list';
+	import Search from "svelte-search";
+	import Fuse from "fuse.js";
+	import { VirtualScroll } from "svelte-virtual-scroll-list";
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -10,14 +10,17 @@
 	 * @type {string}
 	 */
 	let value;
-	
+
 	/**
-	 * @type {{ uniqueKey: any; data: any; }[]}
+	 * @type {{ uniqueKey: number | string; data: { divider: string } | {  raw_url: string, path: string, title: string, author: string, coauthors: string[], summary: string }; }[]}
 	 */
 	let articles = data.json.flatMap((i, idx) => {
-		let month = i.date.split('-')[0];
-		let year = i.date.split('-')[1];
-		let divider = month[0].toUpperCase() + month.slice(1) + ' ' + year;
+		let month = i.date.split("-")[0];
+		let year = i.date.split("-")[1];
+		let divider = month[0].toUpperCase() + month.slice(1) + " " + year;
+		/**
+		 * @type {{ uniqueKey: number | string; data: { divider: string } | {  raw_url: string, path: string, title: string, author: string, coauthors: string[], summary: string }; }[]}
+		 */
 		let result = [{ uniqueKey: idx, data: { divider } }];
 		result = result.concat(i.articles.map((a, idx) => ({ uniqueKey: `article-${idx}`, data: a })));
 		return result;
@@ -25,11 +28,11 @@
 	let searchedArticles = [...articles];
 
 	const search_engine = new Fuse(articles, {
-		keys: ['data.title', 'data.summary']
+		keys: ["data.title", "data.summary"]
 	});
 
 	const search = () => {
-		if (value == '') searchedArticles = [...articles];
+		if (value == "") searchedArticles = [...articles];
 		else {
 			searchedArticles = [];
 			search_engine.search(value).forEach((e) => {
@@ -57,7 +60,7 @@
 	<button
 		on:click={() => {
 			searchedArticles = [...articles];
-			value = '';
+			value = "";
 		}}
 		id="close_button"
 		class="material-symbols-outlined"

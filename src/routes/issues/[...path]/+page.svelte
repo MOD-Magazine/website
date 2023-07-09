@@ -1,5 +1,5 @@
 <script>
-	import SvelteMarkdown from 'svelte-markdown';
+	import SvelteMarkdown from "svelte-markdown";
 	/** @type {import('./$types').PageData} */
 	export let data;
 

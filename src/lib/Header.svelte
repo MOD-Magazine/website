@@ -1,40 +1,56 @@
+<script>
+	import Logo from "$lib/logo.svg?raw";
+</script>
+
 <header>
+	<a href="/">
+		<span class="logo">{@html Logo}</span>
+	</a>
 	<nav>
-		<span>MOD! Magazine</span>
-		<div>
-			<a href="/issues">All Articles</a>
-		</div>
+		<a href="/about">About</a>
+		<a href="/issues">Articles</a>
+		<a href="/contact">Contact</a>
 	</nav>
 </header>
 
 <style>
 	header {
-		background-color: var(--secondary);
-		border-bottom: 1px solid var(--border-color);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 1rem;
+		background-color: var(--accent);
 	}
 
 	nav {
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		margin: auto;
-		padding: 1.25rem;
-		max-width: 960px;
+		flex-direction: row;
+		gap: 1rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
 	}
 
-	span {
-		font-weight: 600;
-		font-size: 3em;
-		text-decoration: none;
+	.logo {
+		display: inline-block;
+		height: 3rem;
 	}
 
-	a {
+	:global(.logo svg) {
+		height: 100%;
+		width: 100%;
+	}
+
+	a:not(.logo) {
 		text-transform: uppercase;
-		color: white;
 		text-decoration: none;
-		background-color: var(--primary);
-		padding: 0.5rem 1rem;
-		border-radius: var(--border-radius);
-		font-size: 0.875rem;
+		color: var(--text);
+	}
+
+	@media (min-width: 768px) {
+		header {
+			flex-direction: row;
+			justify-content: space-between;
+		}
 	}
 </style>

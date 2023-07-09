@@ -1,5 +1,5 @@
 <script>
-	import Contributor from './Contributor.svelte';
+	import Contributor from "./Contributor.svelte";
 
 	export let data;
 </script>

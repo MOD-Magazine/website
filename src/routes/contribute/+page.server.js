@@ -1,7 +1,7 @@
-const API_BASE = 'https://discord.com/api/v10';
-const CDN_BASE = 'https://cdn.discordapp.com';
+const API_BASE = "https://discord.com/api/v10";
+const CDN_BASE = "https://cdn.discordapp.com";
 
-import { DISCORD_TOKEN, GUILD_ID, WRITER_ROLE_ID, DEVELOPER_ROLE_ID } from '$env/static/private';
+import { DISCORD_TOKEN, GUILD_ID, WRITER_ROLE_ID, DEVELOPER_ROLE_ID } from "$env/static/private";
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
@@ -38,9 +38,9 @@ export async function load() {
  * @returns import('discord-api-types/v10').APIGuildMember[]
  */
 async function getMembers(snowflake) {
-	const after = snowflake != undefined ? `&after=${snowflake}` : '';
+	const after = snowflake != undefined ? `&after=${snowflake}` : "";
 	const req = await fetch(`${API_BASE}/guilds/${GUILD_ID}/members?limit=1000${after}`, {
-		method: 'GET',
+		method: "GET",
 		headers: {
 			Authorization: `Bot ${DISCORD_TOKEN}`
 		}
@@ -55,7 +55,7 @@ async function getMembers(snowflake) {
 function stripData(members) {
 	return members.map((member) => {
 		return {
-			name: member.nick ?? member.user?.username ?? 'Unknown',
+			name: member.nick ?? member.user?.username ?? "Unknown",
 			avatar: member.avatar
 				? `${CDN_BASE}/${GUILD_ID}/guild_id/users/${member.user?.id}/avatars/${member.avatar}.png`
 				: `${CDN_BASE}/avatars/${member.user?.id}/${member.user?.avatar}.png`

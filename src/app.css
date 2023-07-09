@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300,500,700,900&display=swap");
 
 :root {
-	--primary: #1b2735;
+	--primary: #1b2735; 
 	--secondary: #f7fbff;
-	--accent: #2c4057;
+	--text: #030712;
+	--accent: #8BB174;
 	--border-color: #cccccc;
 	--border-radius: 0.3em;
 	--transition-time: 250ms;
@@ -28,7 +29,8 @@ h4,
 h5,
 h6,
 textarea {
-	font-family: 'Montserrat', sans-serif;
+	font-family: "Inter", sans-serif;
+	color: var(--text);
 }
 
 h1,
