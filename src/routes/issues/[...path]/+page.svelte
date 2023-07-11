@@ -35,7 +35,7 @@
 	{/each}
 </div>
 
-<SvelteMarkdown source={data.markdown} />
+<SvelteMarkdown source={data.text} />
 
 <style>
 	.author {

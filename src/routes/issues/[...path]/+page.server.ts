@@ -9,15 +9,15 @@ export async function load({ params }) {
 		throw redirect(301, "/legacy/april_23.pdf");
 	}
 
-	const text = await fetch(
+	const rawText = await fetch(
 		`https://raw.githubusercontent.com/MOD-Magazine/MOD-Magazine/main/issues/${params.path}.md`,
 	).then((r) => r.text());
-	const data = parseFrontmatter<ArticleFrontmatter>(text);
+	const data = parseFrontmatter<ArticleFrontmatter>(rawText);
 	let content = data.content;
 
 	// Replace relative image links with absolute ones
 	content.match(/assets\/.*[.]png/g)?.forEach((e) => {
-		content = text.replace(
+		content = content.replace(
 			e,
 			"https://raw.githubusercontent.com/MOD-Magazine/MOD-Magazine/main/issues/" +
 				params.path.split("/")[0] +
@@ -35,7 +35,7 @@ export async function load({ params }) {
 	}
 
 	return {
-		markdown: text,
+		text: content,
 		author: data.frontmatter.author,
 		title: data.frontmatter.title,
 		coauthors: data.frontmatter.coauthors ?? [],
