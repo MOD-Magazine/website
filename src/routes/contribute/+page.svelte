@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Contributor from "./Contributor.svelte";
 
 	export let data;
