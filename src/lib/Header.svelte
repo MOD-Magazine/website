@@ -9,7 +9,7 @@
 	<nav>
 		<a href="/about"><span>About</span></a>
 		<a href="/issues"><span>Articles</span></a>
-		<a href="/contact"><span>Contact</span></a>
+		<a href="/discord"><span>Discuss</span></a>
 	</nav>
 </header>
 
@@ -50,7 +50,7 @@
 		text-transform: uppercase;
 		text-decoration: none;
 		font-size: 1.25rem;
-		font-weight: 700;
+		font-weight: 600;
 		color: var(--text);
 	}
 
