@@ -3,7 +3,7 @@ import { DISCORD_TOKEN, GUILD_ID, WRITER_ROLE_ID, DEVELOPER_ROLE_ID } from "$env
 import type { APIGuildMember, Snowflake } from "discord-api-types/v10";
 
 const API_BASE = "https://discord.com/api/v10";
-const CDN_BASE = "https://cdn.discord.com";
+const CDN_BASE = "https://cdn.discordapp.com";
 
 type Contributor = {
 	name: string;
