@@ -11,6 +11,11 @@
 	</main>
 </div>
 
+<footer>
+	<p><a href="https://github.com/MOD-Magazine/website">website</a>@{import.meta.env.CF_PAGES_COMMIT_SHA}</p>
+	<p>© MOD! Magazine 2023</p>
+</footer>
+
 <style>
 	div {
 		display: flex;
@@ -26,5 +31,12 @@
 		padding: 1.25em;
 		width: 100%;
 		max-width: 960px;
+	}
+
+	footer{
+		font-size: small;
+		text-align: center;
+		margin-top: 1rem;
+		margin-bottom: 0.5rem;
 	}
 </style>
