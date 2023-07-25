@@ -1,12 +1,12 @@
-import type { ArticleFrontmatter, Issue } from "$lib/types";
+import type { Issue, IssueArticle } from "$lib/types";
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load(): Promise<{ articles: ArticleFrontmatter[] }> {
+export async function load(): Promise<{ articles: IssueArticle[] }> {
     const issues: Issue[] = await fetch(
         "https://raw.githubusercontent.com/MOD-Magazine/MOD-Magazine/main/issues/issues.json",
     ).then((r) => r.json());
 
-    const articles: ArticleFrontmatter[] = [];
+    const articles: IssueArticle[] = [];
 
     for (let i = 0; i < 3; i++) {
         if (issues[0].articles[i] != null) {

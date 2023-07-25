@@ -22,6 +22,11 @@ textarea {
 	color: var(--text);
 }
 
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
 /* ALL BELOW IS FROM https://andy-bell.co.uk/a-modern-css-reset/ */
 
 /* Box sizing rules */
