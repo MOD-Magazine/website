@@ -20,7 +20,8 @@
 		justify-content: center;
 		align-items: center;
 		padding: 0.75rem;
-		background-color: #1A0716;
+		background-color: #d1d5db;
+		border-bottom: 0.1rem solid #1A0716;
 	}
 
 	nav {
@@ -50,8 +51,7 @@
 		text-decoration: none;
 		font-size: 1.25rem;
 		font-weight: 700;
-		/* make this a var when the palette is finalized */
-		color: #B37012;
+		color: var(--text);
 	}
 
 	@media (min-width: 768px) {

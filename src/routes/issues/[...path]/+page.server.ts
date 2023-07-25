@@ -1,6 +1,6 @@
 import { error, redirect } from "@sveltejs/kit";
-import { parse as parseYaml } from "yaml";
 import type { ArticleFrontmatter } from "$lib/types.d.ts";
+import { parseFrontmatter } from "$lib/frontmatter";
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
@@ -39,15 +39,5 @@ export async function load({ params }) {
 		author: data.frontmatter.author,
 		title: data.frontmatter.title,
 		coauthors: data.frontmatter.coauthors ?? [],
-	};
-}
-
-function parseFrontmatter<T>(content: string): { frontmatter: T; content: string } {
-	const frontmatter = content.split("---")[1];
-	const text = content.split("---")[2];
-
-	return {
-		content: text,
-		frontmatter: parseYaml(frontmatter),
 	};
 }

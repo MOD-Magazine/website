@@ -15,12 +15,19 @@
 		keys: ["title", "summary"],
 	});
 
-	const search = () => {		
+	const search = () => {
 		if (searchQuery === "") {
 			filteredArticles = [...articles];
 		} else {
 			filteredArticles = fuse.search(searchQuery).map((e) => e.item);
 		}
+	};
+
+	const transformDate = (date: string) => {
+		const [month, year] = date.split("-");
+		// We're hardcoded to the 21st century. That's probably fine.
+		// FIXME: update this in 2100
+		return `${month.charAt(0).toLocaleUpperCase() + month.slice(1)} 20${year}`;
 	};
 </script>
 
@@ -55,20 +62,20 @@
 
 {#if searchQuery === ""}
 	<VirtualScroll data={issues} key="date" let:data pageMode={true}>
-		<h1 class="divider">{data.date}</h1>
+		<h1 class="divider">{transformDate(data.date)}</h1>
 
 		{#each data.articles as article}
 			<a class="entry" href={`/issues/${article.path}`}>
-				<h3 style="margin-left:20px">{article.title}</h3>
-				<p style="margin-left:40px">{article.summary}</p>
+				<h3>{article.title}</h3>
+				<p>{article.summary}</p>
 			</a>
 		{/each}
 	</VirtualScroll>
 {:else}
 	<VirtualScroll data={filteredArticles} key="title" let:data pageMode={true}>
 		<a class="entry" href={`/issues/${data.path}`}>
-			<h3 style="margin-left:20px">{data.title}</h3>
-			<p style="margin-left:40px">{data.summary}</p>
+			<h3>{data.title}</h3>
+			<p>{data.summary}</p>
 		</a>
 	</VirtualScroll>
 {/if}
