@@ -7,7 +7,9 @@
 
 <h1>{data.title}</h1>
 
-<div>
+<SvelteMarkdown source={data.text} />
+
+<div style="padding-top: 1rem;">
 	<img
 		class="author author_main"
 		src="https://github.com/{data.author}.png"
@@ -35,8 +37,6 @@
 	{/each}
 </div>
 
-<SvelteMarkdown source={data.text} />
-
 <style>
 	.author {
 		border-radius: 100%;
@@ -45,7 +45,7 @@
 		display: flex;
 	}
 	.author:hover ~ .tooltip_wrapper > .tooltip {
-		transition: 500ms linear;
+		transition: 100ms linear;
 		visibility: visible;
 		opacity: 100;
 	}
