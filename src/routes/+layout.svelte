@@ -12,7 +12,7 @@
 </div>
 
 <footer>
-	<p><a href="https://github.com/MOD-Magazine/website">website</a>@{import.meta.env.CF_PAGES_COMMIT_SHA}</p>
+	<p><a href="https://github.com/MOD-Magazine/website">Open Source</a></p>
 	<p>© MOD! Magazine 2023</p>
 </footer>
 
