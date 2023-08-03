@@ -26,7 +26,7 @@
 	const transformDate = (date: string) => {
 		const [month, year] = date.split("-");
 		// We're hardcoded to the 21st century. That's probably fine.
-		// FIXME: update this in 2100
+		// FIXME: update this in 2100 :>
 		return `${month.charAt(0).toLocaleUpperCase() + month.slice(1)} 20${year}`;
 	};
 </script>
@@ -36,7 +36,7 @@
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
 />
 
-<div style="display: flex;">
+<div style="display: flex; padding-bottom: 0.75rem;">
 	<!-- TODO: Use a custom component for this, I don't think we should need a library for it -->
 	<Search
 		hideLabel={true}
@@ -66,17 +66,21 @@
 
 		{#each data.articles as article}
 			<a class="entry" href={`/issues/${article.path}`}>
-				<h3>{article.title}</h3>
-				<p>{article.summary}</p>
+				<div class="article-preview">
+					<h2>{article.title}</h2>
+					<p>{article.summary}</p>
+				</div>
 			</a>
 		{/each}
 	</VirtualScroll>
 {:else}
 	<VirtualScroll data={filteredArticles} key="title" let:data pageMode={true}>
 		<a class="entry" href={`/issues/${data.path}`}>
-			<h3>{data.title}</h3>
-			<p>{data.summary}</p>
-		</a>
+			<div class="article-preview">
+				<h2>{data.title}</h2>
+				<p>{data.summary}</p>
+			</div>
+		</a> article-preview
 	</VirtualScroll>
 {/if}
 
@@ -84,15 +88,24 @@
 	.divider {
 		color: var(--accent);
 	}
+
 	.entry {
 		text-decoration: none;
 		color: black;
 	}
+
+	.article-preview {
+		border: 1px solid #1a0716;
+		border-radius: 0.25rem;
+		padding: 0.5rem;
+		margin: 0.25rem 0;
+	}
+
 	:global([data-svelte-search] input) {
 		width: 100%;
 		font-size: 1rem;
 		padding: 0.5rem;
-		border: 1px dashed var(--border-color);
+		border: 1px solid var(--border-color);
 		border-radius: var(--border-radius);
 		border-bottom-right-radius: 0px;
 		border-top-right-radius: 0px;
@@ -114,13 +127,13 @@
 		height: 0;
 	}
 	#search_button {
-		border: 1px dashed var(--border-color);
+		border: 1px solid var(--border-color);
 		border-radius: 0px;
 		border-left: none;
 		border-right: none;
 	}
 	#close_button {
-		border: 1px dashed var(--border-color);
+		border: 1px solid var(--border-color);
 		border-radius: var(--border-radius);
 		border-bottom-left-radius: 0px;
 		border-top-left-radius: 0px;

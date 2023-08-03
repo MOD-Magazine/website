@@ -1,6 +1,14 @@
 <script lang="ts">
 	import "../app.css";
 	import Header from "$lib/Header.svelte";
+	import Banner from "$lib/Banner.svelte";
+	import { onMount } from "svelte";
+
+	onMount(() => {
+		let banner: HTMLDivElement = document.querySelector("#banner")!;
+		let compensator: HTMLDivElement = document.querySelector("#banner-compensator")!;
+		compensator.style.height = `${banner.clientHeight}px`;
+	})
 </script>
 
 <Header />
@@ -11,10 +19,11 @@
 	</main>
 </div>
 
-<footer>
-	<p><a href="https://github.com/MOD-Magazine/website">Open Source</a></p>
-	<p>© MOD! Magazine 2023</p>
-</footer>
+<div id="banner-compensator"></div>
+
+<Banner>
+	Our website is still very much a WIP - watch this space. In the meantime, check out our coverage of BlanketCon or join us on Discord!
+</Banner>
 
 <style>
 	div {
@@ -31,12 +40,5 @@
 		padding: 1.25em;
 		width: 100%;
 		max-width: 960px;
-	}
-
-	footer{
-		font-size: small;
-		text-align: center;
-		margin-top: 1rem;
-		margin-bottom: 0.5rem;
 	}
 </style>
