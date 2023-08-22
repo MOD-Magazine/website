@@ -1,15 +1,15 @@
 <script lang="ts">
-	import Contributor from "./Contributor.svelte";
+	import Contributor from "../about/Contributor.svelte";
 
 	export let data;
 </script>
 
 <svelte:head>
-	<title>MOD - Contribute</title>
+	<title>About Us - MOD! Magazine</title>
 	<meta name="description" content="Contribute to the MOD! Magazine project" />
 </svelte:head>
 
-<h1>Contribute</h1>
+<h1>About Us</h1>
 
 <p>You can help us too!</p>
 <p>Filler text about steps to contribute</p>

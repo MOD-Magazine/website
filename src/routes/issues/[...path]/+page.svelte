@@ -7,7 +7,9 @@
 
 <h1>{data.title}</h1>
 
-<div>
+<article class="prose"><SvelteMarkdown source={data.text} /></article>
+
+<div style="padding-top: 1rem;">
 	<img
 		class="author author_main"
 		src="https://github.com/{data.author}.png"
@@ -35,25 +37,27 @@
 	{/each}
 </div>
 
-<SvelteMarkdown source={data.markdown} />
-
 <style>
 	.author {
 		border-radius: 100%;
 	}
+
 	.coauthors {
 		display: flex;
 	}
+
 	.author:hover ~ .tooltip_wrapper > .tooltip {
-		transition: 500ms linear;
+		transition: 100ms linear;
 		visibility: visible;
 		opacity: 100;
 	}
+
 	.tooltip_wrapper {
 		position: relative;
 		width: 0;
 		height: 0;
 	}
+
 	.tooltip {
 		pointer-events: none;
 		position: relative;
@@ -69,19 +73,15 @@
 		bottom: 20px;
 		left: 15px;
 	}
+
 	.author_main {
 		width: 80px;
 		height: 80px;
 	}
+
 	.tooltip_main {
 		font-size: medium;
 		bottom: 30px;
 		left: 30px;
-	}
-
-	:global(blockquote) {
-		border-left: 10px solid #1b2735c4;
-		border-radius: var(--border-radius);
-		padding-left: 10px;
 	}
 </style>

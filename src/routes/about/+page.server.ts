@@ -3,7 +3,7 @@ import { DISCORD_TOKEN, GUILD_ID, WRITER_ROLE_ID, DEVELOPER_ROLE_ID } from "$env
 import type { APIGuildMember, Snowflake } from "discord-api-types/v10";
 
 const API_BASE = "https://discord.com/api/v10";
-const CDN_BASE = "https://cdn.discord.com";
+const CDN_BASE = "https://cdn.discordapp.com";
 
 type Contributor = {
 	name: string;
@@ -16,15 +16,20 @@ export async function load() {
 	let lastSnowflake: Snowflake | undefined;
 	let hasMoreMembers = true;
 
-	while (hasMoreMembers) {
-		const members = await getMembers(lastSnowflake);
-		allMembers = allMembers.concat(members);
+	try {
+		while (hasMoreMembers) {
+			const members = await getMembers(lastSnowflake);
+			allMembers = allMembers.concat(members);
 
-		if (members.length < 1000) {
-			hasMoreMembers = false;
-		} else {
-			lastSnowflake = members[members.length - 1].user?.id;
+			if (members.length < 1000) {
+				hasMoreMembers = false;
+			} else {
+				const member = members[members.length - 1];
+				lastSnowflake = member.user?.id;
+			}
 		}
+	} catch (error) {
+		console.error(error);
 	}
 
 	return {
@@ -43,6 +48,10 @@ async function getMembers(snowflake: Snowflake | undefined): Promise<APIGuildMem
 			Authorization: `Bot ${DISCORD_TOKEN}`,
 		},
 	});
+
+	if (!req.ok) {
+		throw new Error(`Failed to get members: ${req.status} ${req.statusText}`);
+	}
 
 	return req.json();
 }

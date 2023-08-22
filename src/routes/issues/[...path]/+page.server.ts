@@ -1,6 +1,6 @@
 import { error, redirect } from "@sveltejs/kit";
-import { parse as parseYaml } from "yaml";
 import type { ArticleFrontmatter } from "$lib/types.d.ts";
+import { parseFrontmatter } from "$lib/frontmatter";
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
@@ -9,15 +9,15 @@ export async function load({ params }) {
 		throw redirect(301, "/legacy/april_23.pdf");
 	}
 
-	const text = await fetch(
+	const rawText = await fetch(
 		`https://raw.githubusercontent.com/MOD-Magazine/MOD-Magazine/main/issues/${params.path}.md`,
 	).then((r) => r.text());
-	const data = parseFrontmatter<ArticleFrontmatter>(text);
+	const data = parseFrontmatter<ArticleFrontmatter>(rawText);
 	let content = data.content;
 
 	// Replace relative image links with absolute ones
 	content.match(/assets\/.*[.]png/g)?.forEach((e) => {
-		content = text.replace(
+		content = content.replace(
 			e,
 			"https://raw.githubusercontent.com/MOD-Magazine/MOD-Magazine/main/issues/" +
 				params.path.split("/")[0] +
@@ -35,19 +35,9 @@ export async function load({ params }) {
 	}
 
 	return {
-		markdown: text,
+		text: content,
 		author: data.frontmatter.author,
 		title: data.frontmatter.title,
 		coauthors: data.frontmatter.coauthors ?? [],
-	};
-}
-
-function parseFrontmatter<T>(content: string): { frontmatter: T; content: string } {
-	const frontmatter = content.split("---")[1];
-	const text = content.split("---")[2];
-
-	return {
-		content: text,
-		frontmatter: parseYaml(frontmatter),
 	};
 }

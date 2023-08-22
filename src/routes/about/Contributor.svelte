@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let name = "Unknown";
-	export let avatar = `https://cdn.discord.com/embed/avatars/${
+	export let avatar = `https://cdn.discordapp.com/embed/avatars/${
 		Math.floor(Math.random() * 5) + 1
 	}.png`;
 </script>

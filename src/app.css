@@ -1,23 +1,41 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300,500,700,900&display=swap");
 
 :root {
-	--primary: #1b2735;
+	--primary: #802770; 
 	--secondary: #f7fbff;
-	--accent: #2c4057;
+	--text: #374151;
+  --headings: #111827;
+	--accent: #8BB174;
 	--border-color: #cccccc;
 	--border-radius: 0.3em;
 	--transition-time: 250ms;
 }
 
-html {
-	height: 100%;
-	scroll-behavior: smooth;
+.centered-text {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
 }
 
-body {
-	min-height: 100%;
-	position: relative;
-	margin: 0;
+h1 {
+  @apply font-bold leading-tight text-gray-900 text-3xl;
+}
+
+h2 {
+  @apply font-bold leading-tight text-gray-900 text-2xl;
+}
+
+h3 {
+  @apply font-bold leading-tight text-gray-900 text-xl;
+}
+
+blockquote {
+  @apply italic text-gray-900 border-l-2 border-gray-200 mt-6 mb-6 pl-4;
+  quotes: "\201C""\201D""\2018""\2019";
 }
 
 body,
@@ -28,7 +46,11 @@ h4,
 h5,
 h6,
 textarea {
-	font-family: "Montserrat", sans-serif;
+	font-family: "Inter", sans-serif;
+}
+
+body, textarea {
+  color: var(--text);
 }
 
 h1,
@@ -37,6 +59,10 @@ h3,
 h4,
 h5,
 h6 {
-	margin-top: 0;
-	margin-bottom: 0;
+  color: var(--headings);
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
 }

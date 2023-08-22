@@ -1,40 +1,67 @@
+<script>
+	import Logo from "$lib/logo.svg?raw";
+</script>
+
 <header>
+	<a id="logo-link" href="/" aria-hidden="true">
+		<span class="logo">{@html Logo}</span>
+	</a>
 	<nav>
-		<span>MOD! Magazine</span>
-		<div>
-			<a href="/issues">All Articles</a>
-		</div>
+		<a href="/about"><span>About</span></a>
+		<a href="/issues"><span>Articles</span></a>
+		<a href="/discord"><span>Discuss</span></a>
 	</nav>
 </header>
 
 <style>
 	header {
-		background-color: var(--secondary);
-		border-bottom: 1px solid var(--border-color);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 0.75rem;
+		background-color: #d1d5db;
+		border-bottom: 1px solid #1A0716;
 	}
 
 	nav {
+		width: 100%;
 		display: flex;
-		align-items: center;
+		flex-direction: row;
 		justify-content: space-between;
-		margin: auto;
-		padding: 1.25rem;
-		max-width: 960px;
+		gap: 1.5rem;
+		padding-top: 0.25rem;
+		padding-bottom: 0.25rem;
 	}
 
-	span {
-		font-weight: 600;
-		font-size: 3em;
-		text-decoration: none;
+	.logo {
+		display: inline-block;
+		height: 3.5rem;
 	}
 
-	a {
+	:global(.logo svg) {
+		height: 100%;
+		width: 100%;
+	}
+
+	a:not(#logo-link) {
+		width: 33.3%;
+		text-align: center;
 		text-transform: uppercase;
-		color: white;
 		text-decoration: none;
-		background-color: var(--primary);
-		padding: 0.5rem 1rem;
-		border-radius: var(--border-radius);
-		font-size: 0.875rem;
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: var(--text);
+	}
+
+	@media (min-width: 768px) {
+		header {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		nav {
+			width: auto;
+		}
 	}
 </style>
