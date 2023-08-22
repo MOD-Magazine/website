@@ -9,19 +9,6 @@
 	<meta name="description" content="Contribute to the MOD! Magazine project" />
 </svelte:head>
 
-<h1>About Us</h1>
-
-<p>You can help us too!</p>
-<p>Filler text about steps to contribute</p>
-<p>Filler text about steps to contribute</p>
-<p>Filler text about steps to contribute</p>
-<p>Filler text about steps to contribute</p>
-<p>Filler text about steps to contribute</p>
-<p>Filler text about steps to contribute</p>
-<p>Filler text about steps to contribute</p>
-
-<p>Join the discord</p>
-
 <h1>Meet the Team</h1>
 
 <h3>Writers</h3>
