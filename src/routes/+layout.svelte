@@ -14,6 +14,7 @@
 <svelte:head>
 	<title>MOD! Magazine</title>
 	<meta name="description" content="The magazine about all things modded Minecraft!" />
+	<meta name="og:image" content="https://github.com/MOD-Magazine/branding/blob/main/logo.png?raw=true" />
 </svelte:head>
 
 <Header />
