@@ -1,8 +1,9 @@
 <script lang="ts">
 	import SvelteMarkdown from "svelte-markdown";
+	import { page } from '$app/stores';  
 	import type { PageData } from "./$types";
 
-	let url = window.location.pathname;
+	let url = $page.url.pathname;
 
 	export let data: PageData;
 </script>
