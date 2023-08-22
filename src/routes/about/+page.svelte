@@ -6,6 +6,7 @@
 
 <svelte:head>
 	<title>About | MOD! Magazine</title>
+	<meta name="description" content="The magazine about all things modded Minecraft!" />
 </svelte:head>
 
 <h1>Meet the Team</h1>

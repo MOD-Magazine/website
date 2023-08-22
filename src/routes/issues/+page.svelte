@@ -38,6 +38,7 @@
 
 <svelte:head>
 	<title>Articles | MOD! Magazine</title>
+	<meta name="description" content="The magazine about all things modded Minecraft!" />
 </svelte:head>
 
 <div style="display: flex; padding-bottom: 0.75rem;">

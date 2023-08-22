@@ -2,7 +2,7 @@
 </script>
 
 <div id="banner">
-	<slot></slot>
+	<slot />
 </div>
 
 <style>

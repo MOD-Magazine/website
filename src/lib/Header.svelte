@@ -21,7 +21,7 @@
 		align-items: center;
 		padding: 0.75rem;
 		background-color: #d1d5db;
-		border-bottom: 1px solid #1A0716;
+		border-bottom: 1px solid #1a0716;
 	}
 
 	nav {

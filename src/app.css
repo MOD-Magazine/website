@@ -4,39 +4,38 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-	--primary: #802770; 
+	--primary: #802770;
 	--secondary: #f7fbff;
 	--text: #374151;
-  --headings: #111827;
-	--accent: #8BB174;
+	--headings: #111827;
+	--accent: #8bb174;
 	--border-color: #cccccc;
 	--border-radius: 0.3em;
 	--transition-time: 250ms;
 }
 
 .centered-text {
-  display: inline-block;
-  width: 100%;
-  text-align: center;
+	display: inline-block;
+	width: 100%;
+	text-align: center;
 }
 
 h1 {
-  @apply font-bold leading-tight text-gray-900 text-3xl;
+	@apply font-bold leading-tight text-gray-900 text-3xl;
 }
 
 h2 {
-  @apply font-bold leading-tight text-gray-900 text-2xl;
+	@apply font-bold leading-tight text-gray-900 text-2xl;
 }
 
 h3 {
-  @apply font-bold leading-tight text-gray-900 text-xl;
+	@apply font-bold leading-tight text-gray-900 text-xl;
 }
 
 blockquote {
-  @apply italic text-gray-900 border-l-2 border-gray-200 mt-6 mb-6 pl-4;
-  quotes: "\201C""\201D""\2018""\2019";
+	@apply italic text-gray-900 border-l-2 border-gray-200 mt-6 mb-6 pl-4;
+	quotes: "\201C""\201D""\2018""\2019";
 }
 
 body,
@@ -50,8 +49,9 @@ textarea {
 	font-family: "Inter", sans-serif;
 }
 
-body, textarea {
-  color: var(--text);
+body,
+textarea {
+	color: var(--text);
 }
 
 h1,
@@ -60,10 +60,10 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--headings);
+	color: var(--headings);
 }
 
 a {
-  text-decoration: none;
-  color: currentColor;
+	text-decoration: none;
+	color: currentColor;
 }

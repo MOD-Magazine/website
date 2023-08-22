@@ -12,9 +12,10 @@
 </script>
 
 <svelte:head>
-	<title>MOD! Magazine</title>
-	<meta name="description" content="The magazine about all things modded Minecraft!" />
-	<meta name="og:image" content="https://github.com/MOD-Magazine/branding/blob/main/logo.png?raw=true" />
+	<meta
+		name="og:image"
+		content="https://github.com/MOD-Magazine/branding/blob/main/logo.png?raw=true"
+	/>
 </svelte:head>
 
 <Header />
@@ -30,7 +31,8 @@
 <Banner>
 	<p>
 		Our website is still very much a WIP - watch this space. In the meantime, check out <a
-			href="https://www.twitch.tv/modmagazinemc" class="underline">our coverage of BlanketCon</a
+			href="https://www.twitch.tv/modmagazinemc"
+			class="underline">our coverage of BlanketCon</a
 		>
 		or <a href="https://modmagazine.net/discord" class="underline">join us on Discord</a>!
 	</p>
