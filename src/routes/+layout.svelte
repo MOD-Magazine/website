@@ -11,9 +11,10 @@
 	});
 </script>
 
-<head>
+<svelte:head>
 	<title>MOD! Magazine</title>
-</head>
+	<meta name="description" content="The magazine about all things modded Minecraft!" />
+</svelte:head>
 
 <Header />
 

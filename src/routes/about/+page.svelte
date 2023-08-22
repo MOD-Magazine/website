@@ -5,8 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>About Us - MOD! Magazine</title>
-	<meta name="description" content="Contribute to the MOD! Magazine project" />
+	<title>About | MOD! Magazine</title>
 </svelte:head>
 
 <h1>Meet the Team</h1>

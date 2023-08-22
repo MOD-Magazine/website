@@ -36,6 +36,10 @@
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
 />
 
+<svelte:head>
+	<title>Articles | MOD! Magazine</title>
+</svelte:head>
+
 <div style="display: flex; padding-bottom: 0.75rem;">
 	<!-- TODO: Use a custom component for this, I don't think we should need a library for it -->
 	<Search

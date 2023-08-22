@@ -38,6 +38,7 @@ export async function load({ params }) {
 		text: content,
 		author: data.frontmatter.author,
 		title: data.frontmatter.title,
+		summary: data.frontmatter.summary ?? "",
 		coauthors: data.frontmatter.coauthors ?? [],
 	};
 }

@@ -2,8 +2,22 @@
 	import SvelteMarkdown from "svelte-markdown";
 	import type { PageData } from "./$types";
 
+	let url = window.location.pathname;
+
 	export let data: PageData;
 </script>
+
+<svelte:head>
+	<title>{data.title} | MOD! Magazine</title>
+	<meta name="description" content={data.summary} />
+	<meta name="author" content={data.author} />
+	<meta property="og:title" content={data.title} />
+	<meta property="og:description" content={data.summary} />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content={`https://modmagazine.net/${url}`} />
+	<meta property="og:site_name" content="MOD! Magazine" />
+	<meta property="og:locale" content="en_US" />
+</svelte:head>
 
 <h1>{data.title}</h1>
 
