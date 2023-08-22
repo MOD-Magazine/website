@@ -8,7 +8,7 @@
 		let banner: HTMLDivElement = document.querySelector("#banner")!;
 		let compensator: HTMLDivElement = document.querySelector("#banner-compensator")!;
 		compensator.style.height = `${banner.clientHeight}px`;
-	})
+	});
 </script>
 
 <Header />
@@ -19,10 +19,13 @@
 	</main>
 </div>
 
-<div id="banner-compensator"></div>
+<div id="banner-compensator" />
 
 <Banner>
-	Our website is still very much a WIP - watch this space. In the meantime, check out our coverage of BlanketCon or join us on Discord!
+	Our website is still very much a WIP - watch this space. In the meantime, check out <a
+		href="https://www.twitch.tv/modmagazinemc">our coverage of BlanketCon</a
+	>
+	or <a href="https://modmagazine.net/discord">join us on Discord</a>!
 </Banner>
 
 <style>
