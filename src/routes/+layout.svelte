@@ -11,6 +11,10 @@
 	});
 </script>
 
+<head>
+	<title>MOD! Magazine</title>
+</head>
+
 <Header />
 
 <div>
