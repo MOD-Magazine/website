@@ -14,7 +14,7 @@
 	<title>{data.title} | MOD! Magazine</title>
 	<meta name="description" content={data.summary} />
 	<meta name="author" content={data.author} />
-	<meta property="og:title" content={`${data.title} | MOD! Magazine Article`} />
+	<meta property="og:title" content={`${data.title} | MOD! Magazine`} />
 	<meta property="og:description" content={data.summary} />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content={`https://modmagazine.net/${url}`} />

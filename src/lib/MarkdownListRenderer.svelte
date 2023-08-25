@@ -15,8 +15,6 @@
 	let gallery = !ordered && images.length === items.length;
 
 	const getUrl = (image: MarkedListItem) => {
-		console.log(image.text);
-		
 		const [_, alt, src] = image.text.trim().match(/!\[(.*)\]\((.*)\)/)!;
 		return { src, alt };
 	};
