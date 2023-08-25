@@ -67,3 +67,7 @@ a {
 	text-decoration: none;
 	color: currentColor;
 }
+
+input[type="search"] {
+	-webkit-appearance: none;
+}
