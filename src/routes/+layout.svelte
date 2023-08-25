@@ -1,7 +1,7 @@
 <script lang="ts">
 	import "../app.css";
-	import Header from "$lib/Header.svelte";
-	import Banner from "$lib/Banner.svelte";
+	import Header from "./Header.svelte";
+	import Banner from "./Banner.svelte";
 	import { onMount } from "svelte";
 
 	onMount(() => {

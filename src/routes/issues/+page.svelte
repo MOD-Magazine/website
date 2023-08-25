@@ -2,7 +2,8 @@
 	import Fuse from "fuse.js";
 	import { VirtualScroll } from "svelte-virtual-scroll-list";
 	import type { PageData } from "./$types";
-	import Search from "$lib/Search.svelte";
+	import Search from "./Search.svelte";
+	import ArticleCard from "$lib/ArticleCard.svelte";
 
 	export let data: PageData;
 	let issues = data.issues;
@@ -40,42 +41,23 @@
 
 {#if query === ""}
 	<VirtualScroll data={issues} key="date" let:data pageMode={true}>
-		<h1 class="divider">{transformDate(data.date)}</h1>
-
-		{#each data.articles as article}
-			<a class="entry" href={`/issues/${article.path}`}>
-				<div class="article-preview">
-					<h2>{article.title}</h2>
-					<p>{article.summary}</p>
-				</div>
-			</a>
-		{/each}
+		<h1 class="pb-2 text-4xl text-mod-accent">{transformDate(data.date)}</h1>
+		<div class="absolute w-2 h-2 -translate-x-1 bg-gray-300 rounded-full" />
+		<div class="flex flex-col pl-2 space-y-1 border-l border-gray-400">
+			{#each data.articles as article}
+				<a href={`/issues/${article.path}`}>
+					<ArticleCard {article} />
+				</a>
+			{/each}
+		</div>
 	</VirtualScroll>
 {:else}
 	<VirtualScroll data={filteredArticles} key="title" let:data pageMode={true}>
-		<a class="entry" href={`/issues/${data.path}`}>
-			<div class="article-preview">
+		<a href={`/issues/${data.path}`}>
+			<div>
 				<h2>{data.title}</h2>
 				<p>{data.summary}</p>
 			</div>
 		</a>
 	</VirtualScroll>
 {/if}
-
-<style>
-	.divider {
-		color: var(--accent);
-	}
-
-	.entry {
-		text-decoration: none;
-		color: black;
-	}
-
-	.article-preview {
-		border: 1px solid #1a0716;
-		border-radius: 0.25rem;
-		padding: 0.5rem;
-		margin: 0.25rem 0;
-	}
-</style>

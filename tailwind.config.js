@@ -2,7 +2,11 @@
 export default {
 	content: ["./src/**/*.{html,js,svelte,ts}"],
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				"mod-accent": "#8bb174"
+			}
+		},
 	},
 	plugins: [require("@tailwindcss/typography")],
 };
