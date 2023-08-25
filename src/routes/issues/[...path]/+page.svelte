@@ -2,6 +2,7 @@
 	import SvelteMarkdown from "svelte-markdown";
 	import { page } from "$app/stores";
 	import type { PageData } from "./$types";
+	import MarkdownListRenderer from "$lib/MarkdownListRenderer.svelte";
 
 	let url = $page.url.pathname;
 
@@ -27,7 +28,7 @@
 		<img src={data.image} alt="" />
 	{/if}
 
-	<SvelteMarkdown source={data.text} />
+	<SvelteMarkdown source={data.text} renderers={{ list: MarkdownListRenderer }} />
 </article>
 
 <div class="flex items-center pt-8 mx-auto">

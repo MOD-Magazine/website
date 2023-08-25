@@ -2,12 +2,6 @@
 	import "../app.css";
 	import Logo from "$lib/logo.svg?raw";
 	import { onMount } from "svelte";
-
-	onMount(() => {
-		let banner: HTMLDivElement = document.querySelector("#banner")!;
-		let compensator: HTMLDivElement = document.querySelector("#banner-compensator")!;
-		compensator.style.height = `${banner.clientHeight}px`;
-	});
 </script>
 
 <svelte:head>

@@ -20,16 +20,16 @@
 		on:input={update}
 		placeholder="Search"
 	/>
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div
 		class="flex items-center justify-center p-2.5 border border-gray-200 rounded-r-lg cursor-pointer"
+		role="button"
+		tabindex="0"
+		on:click={() => dispatch("updated", value)}
 	>
 		<SearchIcon
 			color="#4b5563"
 			size={20}
-			on:click={() => {
-				value = "";
-				dispatch("updated", value);
-			}}
 		/>
 	</div>
 </div>
