@@ -2,6 +2,7 @@
 	import type { PageData } from "./$types";
 	import twitch from "$lib/twitch.svg";
 	import youtube from "$lib/youtube.png";
+	import ArticleCard from "$lib/ArticleCard.svelte";
 
 	export let data: PageData;
 
@@ -13,12 +14,14 @@
 	<meta name="description" content="The magazine about all things modded Minecraft!" />
 </svelte:head>
 
-<h2>MOD! - A News Publication for Modded Minecraft</h2>
+<h1 class="font-bold text-center">MOD! - A News Publication for Modded Minecraft</h1>
 
-<div class="icons">
-	<a href="https://www.twitch.tv/modmagazinemc"><img src={twitch} alt="Twitch" /></a>
+<div class="flex items-center justify-center">
+	<a href="https://www.twitch.tv/modmagazinemc"
+		><img class="h-8 my-3 mr-4" src={twitch} alt="Twitch" /></a
+	>
 	<a href="https://www.youtube.com/channel/UCYglRn3xc7uLOUfzWH2-QWQ"
-		><img src={youtube} alt="YouTube" /></a
+		><img class="h-8" src={youtube} alt="YouTube" /></a
 	>
 </div>
 
@@ -36,49 +39,15 @@
 </p>
 <br />
 
-<h2>Latest Articles</h2>
-<div>
-	{#each articles as article}
-		<a href={`/issues/${article.path}`}
-			><div class="article-preview">
-				<h2>{article.title}</h2>
-				<p>{article.summary}</p>
-			</div></a
-		>
-	{/each}
-	<a class="centered-text" href="/issues">See more</a>
+<h1>Latest Articles</h1>
+<div class="flex flex-col pl-2 space-y-2">
+	<div class="absolute w-2 h-2 -translate-x-1 bg-gray-300 rounded-full" />
+	<div class="flex flex-col pl-2 space-y-4 border-l border-gray-400">
+		{#each articles as article}
+			<a href={`/issues/${article.path}`}>
+				<ArticleCard {article} />
+			</a>
+		{/each}
+	</div>
+	<a class="text-xl" href="/issues">See more</a>
 </div>
-
-<style>
-	.icons {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.icons > a > img {
-		height: 2rem;
-		margin: 0 0.5rem;
-		margin-top: 1rem;
-		margin-bottom: 1rem;
-	}
-
-	.article-preview {
-		border: 1px solid #1a0716;
-		border-radius: 0.25rem;
-		padding: 0.5rem;
-		margin: 0.5rem 0;
-	}
-
-	.article-preview:hover {
-		background-color: #e5e7eb;
-	}
-
-	.article-preview h2 {
-		font-size: 1.2rem;
-	}
-
-	.article-preview p {
-		font-size: 0.85rem;
-	}
-</style>

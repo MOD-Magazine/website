@@ -42,13 +42,15 @@
 {#if query === ""}
 	<VirtualScroll data={issues} key="date" let:data pageMode={true}>
 		<h1 class="pb-2 text-4xl text-mod-accent">{transformDate(data.date)}</h1>
-		<div class="absolute w-2 h-2 -translate-x-1 bg-gray-300 rounded-full" />
-		<div class="flex flex-col pl-2 space-y-1 border-l border-gray-400">
-			{#each data.articles as article}
-				<a href={`/issues/${article.path}`}>
-					<ArticleCard {article} />
-				</a>
-			{/each}
+		<div class="pl-2">
+			<div class="absolute w-2 h-2 -translate-x-1 bg-gray-300 rounded-full" />
+			<div class="flex flex-col pl-2 space-y-4 border-l border-gray-400">
+				{#each data.articles as article}
+					<a href={`/issues/${article.path}`}>
+						<ArticleCard {article} />
+					</a>
+				{/each}
+			</div>
 		</div>
 	</VirtualScroll>
 {:else}

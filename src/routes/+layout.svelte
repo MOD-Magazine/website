@@ -49,7 +49,6 @@
 	main {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		padding: 1.25em;
 		width: 100%;
 		max-width: 960px;
