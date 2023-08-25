@@ -26,7 +26,7 @@ export async function load({ params }) {
 		);
 	});
 
-	if (data.frontmatter.image !== null) {
+	if (data.frontmatter.image) {
 		data.frontmatter.image.match(/\.?\/assets\/.*[.]png/g)?.forEach((e) => {
 			data.frontmatter.image = (data.frontmatter.image || "").replace(
 				e,
