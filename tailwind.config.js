@@ -4,7 +4,8 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				"mod-accent": "#8bb174"
+				"mod-accent": "#8bb174",
+				"mod-purple": "#802770"
 			}
 		},
 	},

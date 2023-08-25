@@ -4,17 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-	--primary: #802770;
-	--secondary: #f7fbff;
-	--text: #374151;
-	--headings: #111827;
-	--accent: #8bb174;
-	--border-color: #cccccc;
-	--border-radius: 0.3em;
-	--transition-time: 250ms;
-}
-
 .centered-text {
 	display: inline-block;
 	width: 100%;
@@ -34,7 +23,7 @@ h3 {
 }
 
 blockquote {
-	@apply italic text-gray-900 border-l-2 border-gray-200 mt-6 mb-6 pl-4;
+	@apply text-gray-900 border-l-2 border-gray-200 mt-6 mb-6 pl-4;
 	quotes: "\201C""\201D""\2018""\2019";
 }
 
@@ -45,22 +34,15 @@ h3,
 h4,
 h5,
 h6,
+p,
 textarea {
 	font-family: "Inter", sans-serif;
+	@apply text-gray-800;
 }
 
 body,
 textarea {
 	color: var(--text);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	color: var(--headings);
 }
 
 a {
