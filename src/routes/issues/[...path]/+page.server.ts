@@ -16,7 +16,7 @@ export async function load({ params }) {
 	let content = data.content;
 
 	// Replace relative image links with absolute ones
-	content.match(/assets\/.*[.]png/g)?.forEach((e) => {
+	content.match(/\.?\/assets\/.*[.]png/g)?.forEach((e) => {
 		content = content.replace(
 			e,
 			"https://raw.githubusercontent.com/MOD-Magazine/MOD-Magazine/main/issues/" +
@@ -25,6 +25,19 @@ export async function load({ params }) {
 				e,
 		);
 	});
+
+	if (data.frontmatter.image !== null) {
+		data.frontmatter.image.match(/\.?\/assets\/.*[.]png/g)?.forEach((e) => {
+			data.frontmatter.image = (data.frontmatter.image || "").replace(
+				e,
+				"https://raw.githubusercontent.com/MOD-Magazine/MOD-Magazine/main/issues/" +
+				params.path.split("/")[0] +
+				"/" +
+				e,
+			);
+		});
+	}
+
 
 	if (data.frontmatter == null) {
 		throw error(404, { message: "Article not found." });
@@ -39,6 +52,7 @@ export async function load({ params }) {
 		author: data.frontmatter.author,
 		title: data.frontmatter.title,
 		summary: data.frontmatter.summary ?? "",
+		image: data.frontmatter.image ?? null,
 		coauthors: data.frontmatter.coauthors ?? [],
 	};
 }

@@ -20,9 +20,15 @@
 	<meta property="og:locale" content="en_US" />
 </svelte:head>
 
-<h1 class="pb-4 text-center">{data.title}</h1>
+<article class="mx-auto prose">
+	<h1 class="text-center">{data.title}</h1>
 
-<article class="mx-auto prose"><SvelteMarkdown source={data.text} /></article>
+	{#if data.image}
+		<img src={data.image} alt="" />
+	{/if}
+
+	<SvelteMarkdown source={data.text} />
+</article>
 
 <div class="flex items-center pt-8 mx-auto">
 	<img
