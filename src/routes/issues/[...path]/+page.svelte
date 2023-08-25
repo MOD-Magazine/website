@@ -3,6 +3,7 @@
 	import { page } from "$app/stores";
 	import type { PageData } from "./$types";
 	import MarkdownListRenderer from "$lib/MarkdownListRenderer.svelte";
+	import MarkdownImageRenderer from "$lib/MarkdownImageRenderer.svelte";
 
 	let url = $page.url.pathname;
 
@@ -28,14 +29,14 @@
 		<img src={data.image} alt="" />
 	{/if}
 
-	<SvelteMarkdown source={data.text} renderers={{ list: MarkdownListRenderer }} />
+	<SvelteMarkdown source={data.text} renderers={{ list: MarkdownListRenderer, image: MarkdownImageRenderer }} />
 </article>
 
 <div class="flex items-center pt-8 mx-auto">
 	<img
 		class="w-16 h-16 rounded-full"
 		src="https://github.com/{data.author}.png"
-		width="40px"
+		width="64px"
 		alt={`avatar of ${data.author}`}
 	/>
 	<div class="pl-2">

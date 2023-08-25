@@ -15,7 +15,11 @@
 </script>
 
 <div class="w-full mx-auto font-bold text-center select-none">
-	<img class="object-cover w-full mb-0 h-[95%]" src={current.src} alt={current.alt} />
+	<figure class="flex flex-col items-center mb-0 h-[95%] w-full">
+		<img class="object-cover w-full h-full mb-0" src={current.src} alt={current.alt} />
+		<figcaption class="text-sm text-gray-500">{current.alt}</figcaption>
+	</figure>
+	
 	<div class="flex items-center justify-between px-4 mt-2 not-prose">
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
