@@ -40,10 +40,12 @@
 	</main>
 </div>
 
+<div class="h-12" />
+
 <div
-	class="fixed bottom-0 left-0 grid w-full p-2 text-center text-white place-items-start bg-mod-purple"
+	class="fixed bottom-0 left-0 grid w-full p-2 place-items-start bg-mod-purple"
 >
-	<p>
+	<p class="w-full text-center text-white">
 		Our website is still very much a WIP - watch this space. In the meantime, check out <a
 			href="https://www.twitch.tv/modmagazinemc"
 			class="underline">our coverage of BlanketCon</a

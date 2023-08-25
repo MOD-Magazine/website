@@ -20,83 +20,50 @@
 	<meta property="og:locale" content="en_US" />
 </svelte:head>
 
-<h1>{data.title}</h1>
+<h1 class="pb-4 text-center">{data.title}</h1>
 
-<article class="prose"><SvelteMarkdown source={data.text} /></article>
+<article class="mx-auto prose"><SvelteMarkdown source={data.text} /></article>
 
-<div style="padding-top: 1rem;">
+<div class="flex items-center pt-8 mx-auto">
 	<img
-		class="author author_main"
+		class="w-16 h-16 rounded-full"
 		src="https://github.com/{data.author}.png"
 		width="40px"
 		alt={`avatar of ${data.author}`}
 	/>
-	<div class="tooltip_wrapper">
-		<p class="tooltip tooltip_main">{data.author}</p>
+	<div class="pl-2">
+		<h3>{data.author}</h3>
+		<p>Author</p>
 	</div>
 </div>
 
-<div class="coauthors">
-	{#each data.coauthors as coAuthor}
-		<div>
-			<img
-				class="author"
-				src="https://github.com/{coAuthor}.png"
-				width="40px"
-				alt={`avatar of ${coAuthor}`}
-			/>
-			<div class="tooltip_wrapper">
-				<p class="tooltip">{coAuthor}</p>
-			</div>
+{#if data.coauthors.length > 0}
+<div class="pt-3 border-t border-gray-400">
+	{#each data.coauthors as coauthor}
+	<div class="flex items-center pt-8 mx-auto">
+		<img
+			class="w-12 h-12 rounded-full"
+			src="https://github.com/{coauthor}.png"
+			width="40px"
+			alt={`avatar of ${coauthor}`}
+		/>
+		<div class="pl-2">
+			<h3>{coauthor}</h3>
+			<p>Co-Author</p>
 		</div>
+	</div>
+	
 	{/each}
 </div>
+{/if}
 
 <style>
-	.author {
-		border-radius: 100%;
-	}
-
 	.coauthors {
 		display: flex;
-	}
-
-	.author:hover ~ .tooltip_wrapper > .tooltip {
-		transition: 100ms linear;
-		visibility: visible;
-		opacity: 100;
-	}
-
-	.tooltip_wrapper {
-		position: relative;
-		width: 0;
-		height: 0;
-	}
-
-	.tooltip {
-		pointer-events: none;
-		position: relative;
-		border-radius: var(--border-radius);
-		background-color: var(--primary);
-		padding: 5px;
-		font-size: small;
-		color: white;
-		transition: 500ms linear;
-		opacity: 0;
-		visibility: hidden;
-		display: inline;
-		bottom: 20px;
-		left: 15px;
 	}
 
 	.author_main {
 		width: 80px;
 		height: 80px;
-	}
-
-	.tooltip_main {
-		font-size: medium;
-		bottom: 30px;
-		left: 30px;
 	}
 </style>
