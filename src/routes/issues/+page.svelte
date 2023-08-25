@@ -6,7 +6,7 @@
 	import ArticleCard from "$lib/ArticleCard.svelte";
 
 	export let data: PageData;
-	let issues = data.issues;
+	let issues = data.issues.reverse();
 	let query: string;
 
 	const articles = issues.flatMap((i) => i.articles);
