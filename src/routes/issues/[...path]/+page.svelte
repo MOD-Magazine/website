@@ -38,32 +38,20 @@
 </div>
 
 {#if data.coauthors.length > 0}
-<div class="pt-3 border-t border-gray-400">
-	{#each data.coauthors as coauthor}
-	<div class="flex items-center pt-8 mx-auto">
-		<img
-			class="w-12 h-12 rounded-full"
-			src="https://github.com/{coauthor}.png"
-			width="40px"
-			alt={`avatar of ${coauthor}`}
-		/>
-		<div class="pl-2">
-			<h3>{coauthor}</h3>
-			<p>Co-Author</p>
-		</div>
+	<div class="pt-3 border-t border-gray-400">
+		{#each data.coauthors as coauthor}
+			<div class="flex items-center pt-8 mx-auto">
+				<img
+					class="w-12 h-12 rounded-full"
+					src="https://github.com/{coauthor}.png"
+					width="40px"
+					alt={`avatar of ${coauthor}`}
+				/>
+				<div class="pl-2">
+					<h3>{coauthor}</h3>
+					<p>Co-Author</p>
+				</div>
+			</div>
+		{/each}
 	</div>
-	
-	{/each}
-</div>
 {/if}
-
-<style>
-	.coauthors {
-		display: flex;
-	}
-
-	.author_main {
-		width: 80px;
-		height: 80px;
-	}
-</style>
