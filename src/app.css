@@ -11,7 +11,7 @@
 }
 
 h1 {
-	@apply font-medium leading-tight text-gray-900 text-3xl;
+	@apply font-medium leading-tight text-gray-900 text-3xl text-center;
 }
 
 h2 {
@@ -38,6 +38,10 @@ p,
 textarea {
 	font-family: "Inter", sans-serif;
 	@apply text-gray-800;
+}
+
+p {
+	@apply pb-2;
 }
 
 body,

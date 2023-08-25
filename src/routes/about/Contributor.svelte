@@ -5,19 +5,7 @@
 	}.png`;
 </script>
 
-<span>
-	<img src={avatar} alt={"avatar of " + name} loading="lazy" />
+<div class="flex flex-col items-center">
+	<img class="rounded-full" src={avatar} alt={"avatar of " + name} loading="lazy" />
 	<p>{name}</p>
-</span>
-
-<style>
-	span {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	img {
-		border-radius: 50%;
-	}
-</style>
+</div>

@@ -12,7 +12,7 @@
 	};
 </script>
 
-<div class="flex pb-2">
+<div class="flex pb-4 mx-auto">
 	<input
 		type="search"
 		class="px-3 py-2.5 text-gray-700 border border-r-0 border-gray-200 rounded-l-lg focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"

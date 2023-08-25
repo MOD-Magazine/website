@@ -18,7 +18,7 @@
 </svelte:head>
 
 <header
-	class="flex flex-col items-center justify-center p-3 bg-gray-200 border-b border-gray-400 md:justify-between md:flex-row"
+	class="flex flex-col items-center justify-center p-3 bg-gray-200 border-b border-gray-400 md:px-8 md:justify-between md:flex-row"
 >
 	<a href="/" aria-hidden="true">
 		<span class="inline-block logo h-14">{@html Logo}</span>
