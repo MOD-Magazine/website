@@ -1,5 +1,5 @@
 import type { Issue } from "$lib/types";
-import { Feed } from "feed";
+import { Feed } from "@damm_systems/feed";
 
 const feed = new Feed({
 	title: "MOD! Magazine",

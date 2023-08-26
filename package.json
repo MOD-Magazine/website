@@ -13,8 +13,8 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"dependencies": {
+		"@damm_systems/feed": "^4.4.1",
 		"discord-api-types": "^0.37.47",
-		"feed": "^4.2.2",
 		"fuse.js": "^6.6.2",
 		"lucide-svelte": "^0.268.0",
 		"svelte-markdown": "^0.3.0",
