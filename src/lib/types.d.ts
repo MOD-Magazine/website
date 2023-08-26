@@ -9,6 +9,7 @@ export type ArticleFrontmatter = {
 export type IssueArticle = {
 	raw_url: string;
 	path: string;
+	date: string;
 	title: string;
 	summary: string;
 	image: string | null;
