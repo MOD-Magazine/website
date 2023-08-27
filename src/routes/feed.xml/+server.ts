@@ -8,17 +8,19 @@ export async function GET() {
 
 	for (const issue of issues) {
 		for (const article of issue.articles) {
-			items.push(
-				createItem({
-					title: article.title,
-					link: `https://modmagazine.net/issues/${article.path}`,
-					description: article.summary,
-					content: await fetch(article.raw_url)
-						.then((r) => r.text())
-						.then((t) => t.split("---").slice(2).join("---")),
-					date: new Date(article.date),
-				}),
-			);
+			if (!article.draft) {
+				items.push(
+					createItem({
+						title: article.title,
+						link: `https://modmagazine.net/issues/${article.path}`,
+						description: article.summary,
+						content: await fetch(article.raw_url)
+							.then((r) => r.text())
+							.then((t) => t.split("---").slice(2).join("---")),
+						date: new Date(article.date),
+					}),
+				);
+			}
 		}
 	}
 
