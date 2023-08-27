@@ -14,7 +14,7 @@ export async function GET() {
 				description: article.summary,
 				content: await fetch(article.raw_url)
 					.then((r) => r.text())
-					.then((t) => t.split("---")[2]),
+					.then((t) => t.split("---").slice(2).join("---")),
 				date: new Date(article.date),
 			}));
 		}
