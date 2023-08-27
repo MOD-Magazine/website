@@ -9,7 +9,7 @@
 	let issues = data.issues.reverse();
 	let query: string;
 
-	const articles = issues.flatMap((i) => i.articles);
+	const articles = issues.flatMap((i) => i.articles).filter((a) => !a.draft);
 	let filteredArticles = [...articles];
 
 	const fuse = new Fuse(articles, {

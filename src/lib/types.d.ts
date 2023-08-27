@@ -10,6 +10,7 @@ export type IssueArticle = {
 	raw_url: string;
 	path: string;
 	date: string;
+	draft: boolean;
 	title: string;
 	summary: string;
 	image: string | null;
