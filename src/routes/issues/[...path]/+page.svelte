@@ -6,7 +6,6 @@
 	import MarkdownImageRenderer from "$lib/MarkdownImageRenderer.svelte";
 
 	let url = $page.url.pathname;
-
 	export let data: PageData;
 </script>
 
@@ -29,7 +28,10 @@
 		<img src={data.image} alt="" />
 	{/if}
 
-	<SvelteMarkdown source={data.text} renderers={{ list: MarkdownListRenderer, image: MarkdownImageRenderer }} />
+	<SvelteMarkdown
+		source={data.text}
+		renderers={{ list: MarkdownListRenderer, image: MarkdownImageRenderer }}
+	/>
 </article>
 
 <div class="flex items-center pt-8 mx-auto">
