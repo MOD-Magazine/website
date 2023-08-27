@@ -27,9 +27,6 @@
 		tabindex="0"
 		on:click={() => dispatch("updated", value)}
 	>
-		<SearchIcon
-			color="#4b5563"
-			size={20}
-		/>
+		<SearchIcon color="#4b5563" size={20} />
 	</div>
 </div>

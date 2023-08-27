@@ -19,18 +19,14 @@
 		<img class="object-cover w-full h-full mb-0" src={current.src} alt={current.alt} />
 		<figcaption class="text-sm text-gray-500">{current.alt}</figcaption>
 	</figure>
-	
+
 	<div class="flex items-center justify-between px-4 mt-2 not-prose">
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
-		<p role="button" tabindex="-1" on:click={() => index--} class="cursor-pointer">
-			&lt
-		</p>
+		<p role="button" tabindex="-1" on:click={() => index--} class="cursor-pointer">&lt</p>
 		<p class="font-medium">{index + 1} of {images.length}</p>
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
-		<p role="button" tabindex="0" on:click={() => index++} class="cursor-pointer">
-			&gt
-		</p>
+		<p role="button" tabindex="0" on:click={() => index++} class="cursor-pointer">&gt</p>
 	</div>
 </div>

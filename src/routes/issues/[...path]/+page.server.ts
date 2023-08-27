@@ -31,13 +31,12 @@ export async function load({ params }) {
 			data.frontmatter.image = (data.frontmatter.image || "").replace(
 				e,
 				"https://raw.githubusercontent.com/MOD-Magazine/MOD-Magazine/main/issues/" +
-				params.path.split("/")[0] +
-				"/" +
-				e,
+					params.path.split("/")[0] +
+					"/" +
+					e,
 			);
 		});
 	}
-
 
 	if (data.frontmatter == null) {
 		throw error(404, { message: "Article not found." });

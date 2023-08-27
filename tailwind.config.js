@@ -10,9 +10,9 @@ export default {
 			typography: (theme) => ({
 				DEFAULT: {
 					css: {
-						'h1, h2, h3, h4, h5, h6': {
-							marginTop: theme('spacing.1'),
-							marginBottom: theme('spacing.1'),
+						"h1, h2, h3, h4, h5, h6": {
+							marginTop: theme("spacing.1"),
+							marginBottom: theme("spacing.1"),
 						},
 					},
 				},

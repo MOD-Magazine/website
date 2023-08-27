@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let href = "";
-  export let text = "";
+	export let href = "";
+	export let text = "";
 </script>
 
 <figure class="flex flex-col items-center mb-0">

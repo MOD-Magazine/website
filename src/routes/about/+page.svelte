@@ -19,30 +19,30 @@
 		Contributors are what fuels a project like this - and MOD! is running low on fuel. If you have
 		some free-time, please consider joining us on the Discord server - no commitments of course.
 	</p>
-	
+
 	<h1>Meet the Team</h1>
-	
+
 	<h2>Writers</h2>
 	<div class="grid gap-4 p-4">
 		{#each data.writers as writer}
-		<Contributor {...writer} />
+			<Contributor {...writer} />
 		{/each}
 	</div>
-	
+
 	<h2>Developers</h2>
 	<div class="grid gap-4 p-4">
 		{#each data.developers as developer}
-		<Contributor {...developer} />
+			<Contributor {...developer} />
 		{/each}
 	</div>
 </div>
-	
-	<style>
-		div {
-			grid-template-columns: repeat(1, 1fr);
-		}
-		
-		@media (min-width: 1024px) {
+
+<style>
+	div {
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	@media (min-width: 1024px) {
 		div {
 			grid-template-columns: repeat(4, 1fr);
 		}
