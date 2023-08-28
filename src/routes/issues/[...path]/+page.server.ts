@@ -11,20 +11,9 @@ export async function load({ params }) {
 
 	const rawText = await fetch(
 		`https://raw.githubusercontent.com/MOD-Magazine/MOD-Magazine/main/issues/${params.path}.md`,
-	).then((r) => r.text());
-	const data = parseFrontmatter<ArticleFrontmatter>(rawText);
-	let content = data.content;
-
-	// Replace relative image links with absolute ones
-	content.match(/\.?\/assets\/.*[.]png/g)?.forEach((e) => {
-		content = content.replace(
-			e,
-			"https://raw.githubusercontent.com/MOD-Magazine/MOD-Magazine/main/issues/" +
-				params.path.split("/")[0] +
-				"/" +
-				e,
-		);
-	});
+	).then((r) => r.text());	
+	const data = parseFrontmatter<ArticleFrontmatter>(rawText, params.path.split("/")[0]);
+	const content = data.content;
 
 	if (data.frontmatter.image) {
 		data.frontmatter.image.match(/\.?\/assets\/.*[.]png/g)?.forEach((e) => {
