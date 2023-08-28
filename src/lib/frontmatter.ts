@@ -7,7 +7,7 @@ export function parseFrontmatter<T>(
 	const frontmatter = content.split("---")[1];
 	let text = content.split("---").slice(2).join("---");
 
-	// Replace relative image links with absolute ones
+	// Replace relative image links with links to the raw file on GitHub
 	text.match(/(?:\.\/)?assets\/.*[.]png/g)?.forEach((path) => {
 		text = text.replace(
 			path,
