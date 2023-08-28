@@ -14,6 +14,12 @@
 	$: current = images[index];
 </script>
 
+<svelte:head>
+    {#each images as image}
+      <link rel="preload" as="image" href={image.src} />
+    {/each}
+</svelte:head>
+
 <div class="w-full mx-auto font-bold text-center select-none">
 	<figure class="flex flex-col items-center mb-0 h-[95%] w-full">
 		<img class="object-cover w-full h-full mb-0" src={current.src} alt={current.alt} />
